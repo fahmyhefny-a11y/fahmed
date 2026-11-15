@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAHMED | الدرع المالي لشركات السياحة</title>
+    <meta name="description" content="خدمات المراجعة الداخلية والتدقيق المالي وتأسيس الهيكل التشغيلي لشركات السياحة المستجلبة (Inbound Tourism) بإشراف المحاسب فهمي أحمد.">
+    <meta property="og:title" content="FAHMED | الدرع المالي لكل صاحب عمل">
+    <meta property="og:description" content="خدمات المراجعة الداخلية وتدقيق العمليات المالية والتشغيلية لشركات السياحة.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f172a'/><path d='M30 70 L50 35 L70 70 Z' fill='%2338bdf8'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #38bdf8;
+            --accent-hover: #0284c7;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #334155;
+            --text-heading: #0f172a;
+            --border: #e2e8f0;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --primary: #f8fafc;
+            --primary-light: #e2e8f0;
+            --accent: #38bdf8;
+            --accent-hover: #7dd3fc;
+            --bg: #0b0f19;
+            --card-bg: #111827;
+            --text: #94a3b8;
+            --text-heading: #f8fafc;
+            --border: #1f2937;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-family: 'Tajawal', sans-serif; }
+        html[lang="en"] { font-family: 'Plus Jakarta Sans', 'Tajawal', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; transition: background-color 0.3s, color 0.3s; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        header {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px);
+            z-index: 1000; border-bottom: 1px solid var(--border); transition: var(--transition);
+        }
+        [data-theme="dark"] header { background-color: rgba(17, 24, 39, 0.85); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo { font-size: 1.8rem; font-weight: 900; color: var(--text-heading); letter-spacing: 1px; display: inline-flex; align-items: center; direction: ltr; unicode-bidi: isolate; }
+        .logo span { color: var(--accent); }
+        .nav-menu { display: flex; align-items: center; gap: 1.75rem; }
+        .nav-link { font-weight: 500; color: var(--text); transition: var(--transition); }
+        .nav-link:hover { color: var(--accent); }
+        .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.75rem; border-radius: 50px; font-weight: 700; cursor: pointer; transition: var(--transition); border: none; font-family: inherit; }
+        .btn-primary { background-color: var(--accent); color: #0f172a; box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3); }
+        .btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-2px); }
+        .btn-outline { border: 2px solid var(--border); color: var(--text-heading); background: transparent; }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+        .icon-btn, .hamburger { background: none; border: 1px solid var(--border); cursor: pointer; color: var(--text-heading); font-size: 0.95rem; font-weight: 700; font-family: inherit; display: flex; align-items: center; justify-content: center; height: 40px; min-width: 40px; padding: 0 0.65rem; border-radius: 50px; background-color: var(--card-bg); transition: var(--transition); }
+        .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; width: 40px; padding: 0; }
+        .hamburger span { display: block; width: 20px; height: 2px; background-color: var(--text-heading); transition: var(--transition); }
+
+        .hero { padding: 180px 0 100px; position: relative; overflow: hidden; background: radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 40%); }
+        .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; }
+        .hero-badge { display: inline-block; padding: 0.5rem 1rem; background-color: rgba(56, 189, 248, 0.1); color: var(--accent); border-radius: 50px; font-weight: 700; font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .hero h1 { font-size: 3.1rem; font-weight: 900; color: var(--text-heading); line-height: 1.2; margin-bottom: 1.5rem; }
+        .hero p { font-size: 1.2rem; margin-bottom: 2.5rem; color: var(--text); }
+        .hero-buttons { display: flex; flex-wrap: wrap; gap: 1rem; }
+        .hero-graphic { position: relative; width: 100%; height: 380px; background: linear-gradient(135deg, #1e293b, var(--card-bg)); border-radius: 24px; box-shadow: var(--shadow); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero-graphic svg { width: 80%; height: 80%; }
+
+        section { padding: 100px 0; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 4rem; }
+        .section-header h2 { font-size: 2.4rem; font-weight: 900; color: var(--text-heading); margin-bottom: 1rem; }
+        .section-header p { font-size: 1.1rem; }
+
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-content h2 { font-size: 2.1rem; color: var(--text-heading); margin-bottom: 1.5rem; }
+        .about-content p { margin-bottom: 1rem; }
+        .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .stat-card { background-color: var(--card-bg); padding: 2rem; border-radius: 16px; box-shadow: var(--shadow); border: 1px solid var(--border); text-align: center; }
+        .stat-number { font-size: 2.5rem; font-weight: 900; color: var(--accent); margin-bottom: 0.5rem; direction: ltr; unicode-bidi: isolate; }
+        .stat-label { font-size: 0.95rem; font-weight: 600; }
+
+        .section-alt { background-color: rgba(15, 23, 42, 0.03); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        [data-theme="dark"] .section-alt { background-color: rgba(30, 41, 59, 0.35); }
+
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .service-card { background-color: var(--card-bg); padding: 2.5rem; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); transition: var(--transition); }
+        .service-card:hover { transform: translateY(-8px); border-color: var(--accent); }
+        .service-icon { width: 60px; height: 60px; background-color: rgba(56, 189, 248, 0.1); color: var(--accent); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem; }
+        .service-card h3 { font-size: 1.3rem; color: var(--text-heading); margin-bottom: 1rem; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+        .feature-item { background-color: var(--card-bg); padding: 2rem; border-radius: 16px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .feature-item h3 { font-size: 1.15rem; color: var(--text-heading); margin-bottom: 0.75rem; }
+
+        .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .portfolio-item { background-color: var(--card-bg); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); transition: var(--transition); }
+        .portfolio-item:hover { transform: translateY(-5px); }
+        .portfolio-img { height: 200px; background: linear-gradient(135deg, #0284c7, #0f172a); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 1.25rem; direction: ltr; }
+        .portfolio-info { padding: 1.5rem; }
+        .portfolio-info h3 { font-size: 1.2rem; color: var(--text-heading); margin-bottom: 0.5rem; }
+
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .testimonial-card { background-color: var(--card-bg); padding: 2.5rem; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); display: flex; flex-direction: column; justify-content: space-between; }
+        .testimonial-text { font-style: italic; margin-bottom: 2rem; color: var(--text); }
+        .testimonial-author h4 { color: var(--text-heading); font-size: 1.1rem; }
+        .testimonial-author span { font-size: 0.85rem; color: var(--accent); }
+
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { background-color: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 1rem; overflow: hidden; box-shadow: var(--shadow); }
+        .faq-question { padding: 1.25rem 1.5rem; font-weight: 700; color: var(--text-heading); display: flex; justify-content: space-between; align-items: center; gap: 1rem; cursor: pointer; transition: var(--transition); }
+        .faq-question:hover { color: var(--accent); }
+        .faq-answer { max-height: 0; overflow: hidden; padding: 0 1.5rem; transition: max-height 0.3s ease, padding 0.3s ease; color: var(--text); }
+        .faq-item.active .faq-answer { max-height: 240px; padding: 0 1.5rem 1.5rem 1.5rem; }
+        .faq-item.active .faq-question svg { transform: rotate(180deg); }
+        .faq-question svg { transition: transform 0.3s ease; flex-shrink: 0; }
+
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; }
+        .contact-info-item { display: flex; align-items: flex-start; gap: 1.2rem; margin-bottom: 2rem; }
+        .contact-icon { width: 50px; height: 50px; background-color: rgba(56, 189, 248, 0.1); color: var(--accent); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+        .contact-info-item h4 { color: var(--text-heading); font-size: 1.1rem; margin-bottom: 0.2rem; }
+        .contact-form { background-color: var(--card-bg); padding: 3rem; border-radius: 24px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; font-weight: 600; color: var(--text-heading); margin-bottom: 0.5rem; }
+        .form-control { width: 100%; padding: 0.85rem 1.2rem; background-color: var(--bg); border: 1px solid var(--border); border-radius: 10px; color: var(--text-heading); font-family: inherit; transition: var(--transition); }
+        .form-control:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15); }
+        textarea.form-control { resize: vertical; min-height: 120px; }
+
+        footer { background-color: #0f172a; color: #94a3b8; padding: 80px 0 30px; border-top: 1px solid var(--border); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+        .footer-brand p { margin-top: 1rem; color: #94a3b8; }
+        .footer-links h4 { color: #f8fafc; font-size: 1.2rem; margin-bottom: 1.5rem; }
+        .footer-links ul { display: flex; flex-direction: column; gap: 0.75rem; }
+        .footer-links a:hover { color: var(--accent); }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.9rem; }
+
+        .back-to-top { position: fixed; bottom: 30px; inset-inline-end: 30px; width: 45px; height: 45px; background-color: var(--accent); color: #0f172a; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2); opacity: 0; visibility: hidden; transition: var(--transition); z-index: 999; }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        .back-to-top:hover { transform: translateY(-3px); }
+
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1024px) {
+            .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .services-grid, .portfolio-grid, .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+        @media (max-width: 768px) {
+            .nav-menu { position: fixed; top: 80px; inset-inline-start: -100%; width: 100%; height: calc(100vh - 80px); background-color: var(--card-bg); flex-direction: column; justify-content: center; gap: 2rem; transition: 0.3s ease-in-out; box-shadow: var(--shadow); }
+            .nav-menu.active { inset-inline-start: 0; }
+            .hamburger { display: flex; }
+            .nav-cta { display: none; }
+            .services-grid, .portfolio-grid, .testimonials-grid, .features-grid, .stats-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.3rem; }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo" dir="ltr">FAH<span>MED</span></a>
+            <nav class="nav-menu" aria-label="التنقل الرئيسي">
+                <a href="#about" class="nav-link" data-i18n="nav_about">من نحن</a>
+                <a href="#services" class="nav-link" data-i18n="nav_services">الخدمات</a>
+                <a href="#why-us" class="nav-link" data-i18n="nav_why">لماذا تختارنا</a>
+                <a href="#portfolio" class="nav-link" data-i18n="nav_portfolio">أعمالنا</a>
+                <a href="#testimonials" class="nav-link" data-i18n="nav_testimonials">آراء العملاء</a>
+                <a href="#contact" class="nav-link" data-i18n="nav_contact">تواصل معنا</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="icon-btn" id="langToggle" aria-label="تغيير اللغة / Switch Language">EN</button>
+                <button class="icon-btn" id="themeToggle" aria-label="تبديل الوضع الليلي والنهاري">☀️</button>
+                <a href="#contact" class="btn btn-primary nav-cta" data-i18n="nav_cta" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">احجز استشارة</a>
+                <button class="hamburger" id="hamburger" aria-label="فتح قائمة التنقل">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content reveal">
+                    <div class="hero-badge" data-i18n="hero_badge">مختصون في السياحة المستجلبة (Inbound)</div>
+                    <h1 data-i18n="hero_title">الدرع المالي لكل صاحب عمل</h1>
+                    <p data-i18n="hero_desc">قيادة النمو المستدام في قطاع السفر والسياحة الوافدة من خلال رقابة داخلية صارمة، تدقيق مالي استراتيجي، وحماية تامة للأصول والأرباح.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary" data-i18n="hero_btn1">ابدأ الاستشارة الآن</a>
+                        <a href="#services" class="btn btn-outline" data-i18n="hero_btn2">استكشف الخدمات</a>
+                    </div>
+                </div>
+                <div class="hero-graphic reveal">
+                    <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="رسم توضيحي للنمو المالي والمراجعة">
+                        <rect width="400" height="300" rx="20" fill="url(#paint0_linear)"/>
+                        <path d="M50 220L120 160L180 190L270 100L350 130" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="270" cy="100" r="8" fill="#38bdf8"/>
+                        <circle cx="350" cy="130" r="8" fill="#38bdf8"/>
+                        <rect x="50" y="50" width="135" height="40" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+                        <text x="68" y="75" fill="#38bdf8" font-size="14" font-weight="bold" direction="ltr">FAHMED AUDIT</text>
+                        <defs>
+                            <linearGradient id="paint0_linear" x1="0" y1="0" x2="400" y2="300" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#0f172a"/>
+                                <stop offset="1" stop-color="#1e293b"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content reveal">
+                        <h2 data-i18n="about_title">خبرة ميدانية تمتد لأكثر من 10 سنوات</h2>
+                        <p data-i18n="about_p1">نحن نقدم خدمات مراجعة داخلية واستشارات مالية ومحاسبية مصممة خصيصاً لتلبية الاحتياجات الرقابية والتشغيلية لشركات السياحة والسفر. يرتكز عملنا على فهم دقيق لمتطلبات الأقسام المختلفة وتكاملها لضمان تدفق مالي سليم.</p>
+                        <p data-i18n="about_p2">هدفنا الأساسي هو تقديم تقارير مالية وإدارية دقيقة وموثوقة تعكس واقع الأداء الفعلي، مما يمنح الإدارة العليا وضوحاً كاملاً لاتخاذ قرارات استراتيجية دقيقة.</p>
+                    </div>
+                    <div class="stats-grid reveal">
+                        <div class="stat-card">
+                            <div class="stat-number" data-target="10">0</div>
+                            <div class="stat-label" data-i18n="stat1_label">سنوات خبرة ميدانية</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" data-target="100">0</div>
+                            <div class="stat-label" data-i18n="stat2_label">التزام ضريبي وقانوني</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" data-target="15">0</div>
+                            <div class="stat-label" data-i18n="stat3_label">توفير من التكاليف المباشرة</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" data-target="24">0</div>
+                            <div class="stat-label" data-i18n="stat4_label">دعم استشاري مستمر</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="section-alt">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 data-i18n="services_title">نطاق خدماتنا المتخصصة</h2>
+                    <p data-i18n="services_sub">حلول مالية ورقابية متكاملة لضبط إيقاع العمليات السياحية وحماية الأصول.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card reveal">
+                        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg></div>
+                        <h3 data-i18n="srv1_title">سلامة الدورة المستندية</h3>
+                        <p data-i18n="srv1_desc">التأكد التام من صحة وسلامة الدورة المستندية المكتملة لكافة العمليات التشغيلية والمالية ومنع أي ثغرات.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg></div>
+                        <h3 data-i18n="srv2_title">مراجعة الخزينة والبنوك</h3>
+                        <p data-i18n="srv2_desc">التدقيق والمطابقة الدورية لأرصدة الخزائن والبنوك وضمان انتظام التسويات النقدية والعملات الأجنبية.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></div>
+                        <h3 data-i18n="srv3_title">تقييم الموردين المحليين</h3>
+                        <p data-i18n="srv3_desc">فحص ومطابقة أرصدة الموردين (فنادق ونقل) وتقييمهم دورياً بناءً على الالتزام التعاقدي وجودة الخدمة.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg></div>
+                        <h3 data-i18n="srv4_title">حسابات منظمي الرحلات</h3>
+                        <p data-i18n="srv4_desc">المراجعة والتدقيق المستمر لكشوف حسابات العملاء ومحاصصات Tour Operators لصحة المديونيات.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
+                        <h3 data-i18n="srv5_title">التوجيه عبر أنظمة ERP</h3>
+                        <p data-i18n="srv5_desc">التحقق من صحة وسلامة القيود والتوجيه المحاسبي عبر مختلف الأنظمة مثل Oracle و GAT و Odoo.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
+                        <h3 data-i18n="srv6_title">المنظومة الضريبية والـ VAT</h3>
+                        <p data-i18n="srv6_desc">نظام شامل لمطابقة الفواتير مع بورتال مصلحة الضرائب وضمان الالتزام بضريبة القيمة المضافة.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-us">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 data-i18n="why_title">لماذا تختار <span dir="ltr">FAHMED</span>؟</h2>
+                    <p data-i18n="why_sub">نحن لا نقدم مجرد مراجعة تقليدية، بل نكون الشريك المالي الحقيقي لنمو أعمالك.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-item reveal"><h3 data-i18n="feat1_title">الدرع المالي</h3><p data-i18n="feat1_desc">حماية أصول الشركة ومنع الهدر المالي والتسرب بنسب توفير تتراوح بين 5% إلى 15%.</p></div>
+                    <div class="feature-item reveal"><h3 data-i18n="feat2_title">خبرة قطاع السياحة</h3><p data-i18n="feat2_desc">تخصص دقيق في تفاصيل السياحة المستجلبة (Inbound) وإدارة حسابات الموردين والوكلاء.</p></div>
+                    <div class="feature-item reveal"><h3 data-i18n="feat3_title">دعم القرار الإداري</h3><p data-i18n="feat3_desc">تقارير مالية دقيقة تمنح الإدارة رؤية واضحة وموثوقة لاتخاذ قرارات توسعية سليمة.</p></div>
+                    <div class="feature-item reveal"><h3 data-i18n="feat4_title">التزام ضريبي تام</h3><p data-i18n="feat4_desc">حماية كاملة من المخاطر والغرامات الضريبية عبر المطابقة الآلية الدورية.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="section-alt">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 data-i18n="port_title">نماذج أعمالنا الاستشارية</h2>
+                    <p data-i18n="port_sub">أبرز التقارير والأنظمة الهيكلية التي صُممت لخدمة قطاع السياحة.</p>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item reveal">
+                        <div class="portfolio-img">Post-Tour Audit</div>
+                        <div class="portfolio-info"><h3 data-i18n="port1_title">مراجعة أفواج السياحة المستجلبة</h3><p data-i18n="port1_desc">تقارير ختامية لمقارنة التكاليف التقديرية بالفواتير الفعلية وحساب الهوامش الربحية بدقة.</p></div>
+                    </div>
+                    <div class="portfolio-item reveal">
+                        <div class="portfolio-img">Tax Portal Sync</div>
+                        <div class="portfolio-info"><h3 data-i18n="port2_title">مطابقة البورتال الضريبي</h3><p data-i18n="port2_desc">نظام آلي متكامل لمطابقة مبيعات ومشتريات الموردين والعملاء مع مصلحة الضرائب.</p></div>
+                    </div>
+                    <div class="portfolio-item reveal">
+                        <div class="portfolio-img">Workflow Setup</div>
+                        <div class="portfolio-info"><h3 data-i18n="port3_title">تأسيس الهيكل والدورة المستندية</h3><p data-i18n="port3_desc">إعادة هيكلة أقسام الحسابات والتشغيل والحجوزات لشركات السياحة الناشئة والكبرى.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 data-i18n="test_title">ماذا يقول أصحاب الشركات؟</h2>
+                    <p data-i18n="test_sub">شهادات ثقة من شركاء النجاح في قطاع السياحة والأعمال.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card reveal">
+                        <p class="testimonial-text" data-i18n="test1_text">"بفضل خبرة الأستاذ فهمي أحمد، استطعنا ضبط الهدر المالي في تشغيل الرحلات وزيادة صافي الربحية بنسبة ملحوظة خلال أشهر معدودة."</p>
+                        <div class="testimonial-author"><h4 data-i18n="test1_name">أحمد ممدوح</h4><span data-i18n="test1_role">مدير شركة سياحة وافدة</span></div>
+                    </div>
+                    <div class="testimonial-card reveal">
+                        <p class="testimonial-text" data-i18n="test2_text">"النظام المحاسبي ودورة العمل التي أسسها فريق <span dir="ltr">FAHMED</span> سهلت علينا المطابقات مع الوكلاء الخارجيين والبورتال الضريبي بشكل احترافي."</p>
+                        <div class="testimonial-author"><h4 data-i18n="test2_name">محمود الشريف</h4><span data-i18n="test2_role">صاحب شركة سفر وسياحة</span></div>
+                    </div>
+                    <div class="testimonial-card reveal">
+                        <p class="testimonial-text" data-i18n="test3_text">"التقارير الإدارية أصبحت واضحة للغاية، وصار بإمكاننا اتخاذ القرارات التوسعية ونحن على اطمئنان تام لوضعنا المالي والضريبي."</p>
+                        <div class="testimonial-author"><h4 data-i18n="test3_name">خالد عبد الرحمن</h4><span data-i18n="test3_role">رئيس مجلس إدارة</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="section-alt">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 data-i18n="faq_title">الأسئلة الشائعة</h2>
+                    <p data-i18n="faq_sub">إجابات واضحة عن خدماتنا الاستشارية وطبيعة العمل.</p>
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item reveal">
+                        <div class="faq-question" tabindex="0" role="button" aria-expanded="false"><span data-i18n="faq1_q">ما هي الخدمات الأساسية المقدمة لشركات السياحة المستجلبة؟</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+                        <div class="faq-answer"><p data-i18n="faq1_a">نقدم تدقيقاً كاملاً لدورة البرامج السياحية، مطابقة حسابات الفنادق وشركات النقل، فحص أرصدة الوكلاء الخارجيين، والتوافق التام مع منظومة الفواتير الإلكترونية والضرائب.</p></div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <div class="faq-question" tabindex="0" role="button" aria-expanded="false"><span data-i18n="faq2_q">كيف يتم احتساب الأتعاب الشهرية للخدمات؟</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+                        <div class="faq-answer"><p data-i18n="faq2_a">تعتمد الأتعاب على حجم إيرادات الشركة السنوية عبر شرائح واضحة تبدأ من 450$ شهرياً وتتصاعد تدريجياً لتتناسب تماماً مع حجم الأعمال وتحقيق أعلى عائد استثماري (ROI).</p></div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <div class="faq-question" tabindex="0" role="button" aria-expanded="false"><span data-i18n="faq3_q">هل تقدمون خدمات تأسيس الحسابات للشركات الناشئة؟</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+                        <div class="faq-answer"><p data-i18n="faq3_a">نعم، نقوم بإعداد وبناء النظم المحاسبية والدورات المستندية المكتملة والهياكل التنظيمية المالية للشركات الناشئة من الصفر لضمان انطلاقة قوية وآمنة.</p></div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <div class="faq-question" tabindex="0" role="button" aria-expanded="false"><span data-i18n="faq4_q">كيف تضمنون سرية البيانات المالية والتجارية؟</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+                        <div class="faq-answer"><p data-i18n="faq4_a">نلتزم التزاماً كاملاً بميثاق الشرف المهني وبنود السرية التامة وحماية كافة البيانات المالية للشركة وعملائها وشركائها الدوليين وعدم الإفصاح عنها نهائياً.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 data-i18n="contact_title">تواصل معنا لبدء التعاون</h2>
+                    <p data-i18n="contact_sub">جاهزون للإجابة على استفساراتكم وبناء درعكم المالي الحصين.</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info reveal">
+                        <h3 style="font-size: 1.8rem; color: var(--text-heading); margin-bottom: 1.5rem;" data-i18n="contact_direct">بيانات الاتصال المباشر</h3>
+                        <div class="contact-info-item">
+                            <div class="contact-icon">📞</div>
+                            <div><h4 data-i18n="contact_phone_label">الهاتف / واتساب</h4><p dir="ltr" style="text-align: start;">+2 010-19141118</p></div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-icon">✉️</div>
+                            <div><h4 data-i18n="contact_email_label">البريد الإلكتروني</h4><p dir="ltr" style="text-align: start;">Fahmy.Hefny@Gmail.com</p></div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-icon">📍</div>
+                            <div><h4 data-i18n="contact_loc_label">المقر</h4><p data-i18n="contact_loc_val">القاهرة / مدينة العبور، مصر</p></div>
+                        </div>
+                        <div style="margin-top: 2rem;">
+                            <a href="https://wa.me/201019141118" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="contact_wa" style="background-color: #25d366; color: #fff; width: 100%;">تواصل عبر واتساب مباشرة</a>
+                        </div>
+                    </div>
+                    <div class="contact-form reveal">
+                        <div class="form-success-msg" id="formSuccess" data-i18n="form_success" style="display: none; background-color: rgba(34, 197, 94, 0.15); color: #22c55e; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; font-weight: 600; text-align: center;">تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.</div>
+                        <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+                            <input type="hidden" name="access_key" value="decf981b-71dc-4d08-9eb4-5038fb99e8e4">
+                            
+                            <div class="form-group">
+                                <label for="name" data-i18n="form_name">الاسم الكريم</label>
+                                <input type="text" id="name" name="name" class="form-control" required placeholder="أدخل اسمك أو اسم الشركة" data-i18n-ph="form_name_ph">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" data-i18n="form_email">البريد الإلكتروني أو الهاتف</label>
+                                <input type="text" id="email" name="email" class="form-control" required placeholder="name@example.com أو رقم الهاتف" data-i18n-ph="form_email_ph">
+                            </div>
+                            <div class="form-group">
+                                <label for="message" data-i18n="form_msg">الرسالة أو تفاصيل الاستشارة</label>
+                                <textarea id="message" name="message" class="form-control" required placeholder="اكتب تفاصيل طلبك أو استفسارك هنا..." data-i18n-ph="form_msg_ph"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;" data-i18n="form_submit">إرسال الطلب</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo" dir="ltr" style="color: #f8fafc;">FAH<span>MED</span></a>
+                    <p data-i18n="footer_desc">الدرع المالي لكل صاحب عمل. خبرة متقدمة في المراجعة الداخلية وتأسيس الأنظمة المحاسبية لقطاع السياحة الوافدة.</p>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer_links_title">روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#about" data-i18n="nav_about">من نحن</a></li>
+                        <li><a href="#services" data-i18n="nav_services">الخدمات</a></li>
+                        <li><a href="#why-us" data-i18n="nav_why">لماذا تختارنا</a></li>
+                        <li><a href="#contact" data-i18n="nav_contact">تواصل معنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer_contact_title">تواصل مباشر</h4>
+                    <ul>
+                        <li><a href="tel:+201019141118" dir="ltr">+2 010-19141118</a></li>
+                        <li><a href="mailto:Fahmy.Hefny@Gmail.com" dir="ltr">Fahmy.Hefny@Gmail.com</a></li>
+                        <li><a href="https://wa.me/201019141118" target="_blank" rel="noopener noreferrer" data-i18n="footer_wa">واتساب مباشر</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p id="copyright"><span data-i18n="footer_copy_pre">جميع الحقوق محفوظة &copy;</span> <span id="currentYear"></span> <span dir="ltr">FAHMED</span>. <span data-i18n="footer_copy_post">إشراف المحاسب فهمي أحمد.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="العودة لأعلى الصفحة">↑</button>
+
+    <script>
+        const translations = {
+            ar: {
+                page_title: "FAHMED | الدرع المالي لشركات السياحة",
+                nav_about: "من نحن", nav_services: "الخدمات", nav_why: "لماذا تختارنا", nav_portfolio: "أعمالنا", nav_testimonials: "آراء العملاء", nav_contact: "تواصل معنا", nav_cta: "احجز استشارة",
+                hero_badge: "مختصون في السياحة المستجلبة (Inbound)", hero_title: "الدرع المالي لكل صاحب عمل", hero_desc: "قيادة النمو المستدام في قطاع السفر والسياحة الوافدة من خلال رقابة داخلية صارمة، تدقيق مالي استراتيجي، وحماية تامة للأصول والأرباح.",
+                hero_btn1: "ابدأ الاستشارة الآن", hero_btn2: "استكشف الخدمات",
+                about_title: "خبرة ميدانية تمتد لأكثر من 10 سنوات",
+                about_p1: "نحن نقدم خدمات مراجعة داخلية واستشارات مالية ومحاسبية مصممة خصيصاً لتلبية الاحتياجات الرقابية والتشغيلية لشركات السياحة والسفر. يرتكز عملنا على فهم دقيق لمتطلبات الأقسام المختلفة وتكاملها لضمان تدفق مالي سليم.",
+                about_p2: "هدفنا الأساسي هو تقديم تقارير مالية وإدارية دقيقة وموثوقة تعكس واقع الأداء الفعلي، مما يمنح الإدارة العليا وضوحاً كاملاً لاتخاذ قرارات استراتيجية دقيقة.",
+                stat1_label: "سنوات خبرة ميدانية", stat2_label: "التزام ضريبي وقانوني", stat3_label: "توفير من التكاليف المباشرة", stat4_label: "دعم استشاري مستمر",
+                services_title: "نطاق خدماتنا المتخصصة", services_sub: "حلول مالية ورقابية متكاملة لضبط إيقاع العمليات السياحية وحماية الأصول.",
+                srv1_title: "سلامة الدورة المستندية", srv1_desc: "التأكد التام من صحة وسلامة الدورة المستندية المكتملة لكافة العمليات التشغيلية والمالية ومنع أي ثغرات.",
+                srv2_title: "مراجعة الخزينة والبنوك", srv2_desc: "التدقيق والمطابقة الدورية لأرصدة الخزائن والبنوك وضمان انتظام التسويات النقدية والعملات الأجنبية.",
+                srv3_title: "تقييم الموردين المحليين", srv3_desc: "فحص ومطابقة أرصدة الموردين (فنادق ونقل) وتقييمهم دورياً بناءً على الالتزام التعاقدي وجودة الخدمة والسعر التنافسي.",
+                srv4_title: "حسابات منظمي الرحلات", srv4_desc: "المراجعة والتدقيق المستمر لكشوف حسابات العملاء ومحاصصات Tour Operators لصحة المديونيات.",
+                srv5_title: "التوجيه عبر أنظمة ERP", srv5_desc: "التحقق من صحة وسلامة القيود والتوجيه المحاسبي عبر مختلف الأنظمة مثل Oracle و GAT و Odoo.",
+                srv6_title: "المنظومة الضريبية والـ VAT", srv6_desc: "نظام شامل لمطابقة الفواتير مع بورتال مصلحة الضرائب وضمان الالتزام بضريبة القيمة المضافة.",
+                why_title: 'لماذا تختار <span dir="ltr">FAHMED</span>؟', why_sub: "نحن لا نقدم مجرد مراجعة تقليدية، بل نكون الشريك المالي الحقيقي لنمو أعمالك.",
+                feat1_title: "الدرع المالي", feat1_desc: "حماية أصول الشركة ومنع الهدر المالي والتسرب بنسب توفير تتراوح بين 5% إلى 15%.",
+                feat2_title: "خبرة قطاع السياحة", feat2_desc: "تخصص دقيق في تفاصيل السياحة المستجلبة (Inbound) وإدارة حسابات الموردين والوكلاء.",
+                feat3_title: "دعم القرار الإداري", feat3_desc: "تقارير مالية دقيقة تمنح الإدارة رؤية واضحة وموثوقة لاتخاذ قرارات توسعية سليمة.",
+                feat4_title: "التزام ضريبي تام", feat4_desc: "حماية كاملة من المخاطر والغرامات الضريبية عبر المطابقة الآلية الدورية.",
+                port_title: "نماذج أعمالنا الاستشارية", port_sub: "أبرز التقارير والأنظمة الهيكلية التي صُممت لخدمة قطاع السياحة.",
+                port1_title: "مراجعة أفواج السياحة المستجلبة", port1_desc: "تقارير ختامية لمقارنة التكاليف التقديرية بالفواتير الفعلية وحساب الهوامش الربحية بدقة.",
+                port2_title: "مط
